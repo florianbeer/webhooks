@@ -1,0 +1,44 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Application;
+
+require_once(__DIR__.'/vendor/autoload.php');
+require_once(__DIR__.'/config.php');
+require_once(__DIR__.'/web/core.php');
+
+$console = new Application();
+
+$console
+    ->register('hooks')
+    ->addOption('name', null, InputOption::VALUE_REQUIRED, 'Repository name', null)
+    ->setDescription('Executes hooks for a specified repository.')
+    ->setCode(function (InputInterface $input, OutputInterface $output) use ($transport, $repositories) {
+
+            $name = $input->getOption('name');
+
+            $refs = explode('/', $name);
+            $branch = $refs[count($refs)-1];
+
+            $output->write(sprintf('<info>Hook initiated for %s...</info> ', $name));
+
+            if (!isset($repositories[$name])) {
+
+                $output->writeln('<error>Repository not found.</error>');
+
+            } else {
+
+                doTheHooks($name, $branch, $repositories[$name], $transport);
+
+                $output->writeln('<info>Done.</info>');
+
+            }
+
+        })
+;
+
+$console->run();
