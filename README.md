@@ -1,18 +1,19 @@
 webhooks
 ========
 
-GitHub WebHooks system with PHP and YAML.
+Gitlab.com & GitHub WebHooks system with PHP and YAML.
 
-Created by [Maxime VALETTE](http://maxime.sh) for [Beta&Cie](http://www.betacie.com).
+Created by [Florian Beer](http://42dev.eu).
+Forked from [Maxime Valette's webhooks](https://github.com/betacie/webhooks).
 
 ## Setup
 
-1. Clone the repo: `git clone git@github.com:betacie/webhooks`
+1. Clone the repo: `git clone git@github.com:florianbeer/webhooks`
 2. Install packages: `composer install`
-3. Copy the `config.php.dist` file to `config.php` and custom it
+3. Copy the `config.php.dist` file to `config.php` and customize it
 4. Add a virtual host pointing to `web/`
 
-All set! You just have to add a custom WebHook in the Service Hooks of your GitHub repositories, pointing to `web/hooks.php`.
+All set! You just have to add a custom WebHook in the Service Hooks of your Gitlab.com or GitHub repositories, pointing to `web/hooks.php`.
 
 ## Hooks file
 
@@ -25,16 +26,7 @@ emails:
   - john@acmewebsite.com
 master:
   - /usr/local/bin/composer install
-  - php ./app/console doctrine:schema:drop --force
-  - php ./app/console doctrine:schema:update --force
-  - php ./app/console doctrine:fixtures:load -n
-  - php ./app/console assets:install web --symlink
-  - php ./app/console assetic:dump --env=staging --no-debug
-  - php ./app/console cache:clear --env=staging
+  - php artisan migrate --env=production
 ~~~
 
 So you can easily add or remove commands executed after every push.
-
-## TODO
-
-- Triggers in commit message

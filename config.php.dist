@@ -9,13 +9,13 @@ define('__MAIL_SUBJECT__',      'WebHook %s');
 define('__MAIL_FROM_ADDRESS__', 'git@acmewebsite.com');
 define('__MAIL_FROM__',         'Git WebHook Robot');
 
-$repositories = array(
-    'acme/acmewebsite.com/master' => array(
-        'dir' => '/var/www/acme/acmewebsite.com',
-        'repo' => 'acmewebsite.com',
-        'owner' => 'acme',
-        'branch' => 'master'
-    )
-);
+$repositories = [
+  'acme/acmewebsite.com/master' => [
+    'dir' => '/var/www/acme/acmewebsite.com',
+    'repo' => 'acmewebsite.com',
+    'owner' => 'acme',
+    'branch' => 'master'
+  ]
+];
 
 $transport = Swift_MailTransport::newInstance();

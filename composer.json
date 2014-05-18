@@ -1,10 +1,9 @@
 {
-    "name": "betacie/webhooks",
-    "description": "GitHub WebHooks system with PHP and YAML.",
+    "name": "florianbeer/webhooks",
+    "description": "GitLab.com & Github WebHooks system with PHP and YAML.",
     "require": {
         "php": ">=5.3.1",
         "lespoilus/spyc": "dev-master",
-        "swiftmailer/swiftmailer": "dev-master",
-        "symfony/console": "2.3.*@dev"
+        "swiftmailer/swiftmailer": "dev-master"
     }
 }
