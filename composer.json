@@ -1,6 +1,7 @@
 {
     "name": "florianbeer/webhooks",
     "description": "GitLab.com & Github WebHooks system with PHP and YAML.",
+    "license": "MIT"
     "require": {
         "php": ">=5.3.1",
         "lespoilus/spyc": "dev-master",
